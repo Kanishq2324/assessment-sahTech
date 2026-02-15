@@ -6,7 +6,9 @@ function clean(s) {
 }
 
 function moneyFromVariants(variants = []) {
+
   // Shopify variants often contain price as string like "99.00"
+
   const v = variants[0];
   if (!v?.price) return "";
   return `Price: ${v.price}`;
@@ -34,7 +36,6 @@ export async function scrapeFiveProducts() {
 
     const name = clean(p.title);
     const shortDesc = clean(
-      // body_html can be HTML; keep it short and plainish
       (p.body_html || "")
         .replace(/<[^>]*>/g, " ")
         .replace(/\s+/g, " ")
