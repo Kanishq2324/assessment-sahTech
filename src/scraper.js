@@ -1,18 +1,9 @@
 import puppeteer from "puppeteer";
 
-// We can go for multiple sites (a generic solution)
+// We can go for multiple sites (a generic solution but it's not practically possible)
 const SITES = {
   myntra: {
     buildUrl: (q) => `https://www.myntra.com/${encodeURIComponent(q)}`
-  },
-  ajio: {
-    buildUrl: (q) => `https://www.ajio.com/search/?text=${encodeURIComponent(q)}`
-  },
-  puma: {
-    buildUrl: (q) => `https://in.puma.com/in/en/search?q=${encodeURIComponent(q)}`
-  },
-  adidas: {
-    buildUrl: (q) => `https://www.adidas.co.in/search?q=${encodeURIComponent(q)}`
   }
 };
 
@@ -121,7 +112,7 @@ async function extractFromDom(page) {
 
 
 // main function
-export async function scrapeFiveProducts({ site = "myntra", query = "shoes" } = {}) {
+export async function scrapeFiveProducts({ site = "adidas", query = "shoes" } = {}) {
   if (!SITES[site]) {
     throw new Error(`Unsupported site: ${site}. Use one of: ${Object.keys(SITES).join(", ")}`);
   }
@@ -137,7 +128,7 @@ export async function scrapeFiveProducts({ site = "myntra", query = "shoes" } = 
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121 Safari/537.36"
   );
 
-  
+
   try {
     await page.goto(sourceUrl, { waitUntil: "domcontentloaded", timeout: 90000 });
 
