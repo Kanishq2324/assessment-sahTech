@@ -3,7 +3,7 @@
 ## Overview
 This project implements a complete automated pipeline:
 
-1. Scrapes 5 products from a shopify variant: https://allbirds.com
+1. Scrapes 5 products from more strong wesbites like MYNTRA, AJIO, NIKE, ADIDAS
 2. Generates human-friendly summaries using OpenAI API.
 3. Converts one summary into speech using ElevenLabs API.
 4. Runs fully automated via a single Express endpoint.
